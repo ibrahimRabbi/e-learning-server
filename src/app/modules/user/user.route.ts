@@ -1,21 +1,15 @@
 import { Router } from "express";
-import { deleteAddressController, getsingleUserController, otpVerifyController, providerSignupController, signupController, updateUserController } from "./user.controller";
-import { aunthentication } from "../../middleWare/Authentication";
-import { emailVerification } from "../../middleWare/emailVerification";
+import { signInController, signupController } from "./user.controller";
+ 
 
-export const signupRoute = Router()
 
-signupRoute.post('/sign-up', emailVerification, signupController)
+export const userRoute = Router()
 
-signupRoute.post('/verify', otpVerifyController)
+userRoute.post('/sign-up', signupController)
+userRoute.post('/sign-in', signInController)
+ 
 
-signupRoute.post('/provider-signup', providerSignupController)
-
-signupRoute.get('/get-user', aunthentication, getsingleUserController),
-
-signupRoute.patch(`/update-user`, aunthentication, updateUserController)
-
-signupRoute.patch(`/delete-address`, aunthentication, deleteAddressController)
+ 
 
 
 
